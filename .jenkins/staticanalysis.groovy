@@ -42,8 +42,12 @@ ci: {
             properties(auxiliary.addCommonProperties(property))
     }
 
-    properties(auxiliary.addCommonProperties([pipelineTriggers([cron('0 1 * * 2')])]))
-    stage(urlJobName) {
-        runCI([ubuntu20:['any']], urlJobName)
+    jobNameList.each
+    {
+        jobName, nodeDetails->
+        if (urlJobName == jobName)
+            stage(jobName) {
+                runCI(nodeDetails, jobName)
+            }
     }
 }
