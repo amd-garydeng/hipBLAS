@@ -31,9 +31,7 @@ ci: {
                         "rocm-docker":[]]
     propertyList = auxiliary.appendPropertyList(propertyList)
 
-    def jobNameList = ["compute-rocm-dkms-no-npi-hipclang":([ubuntu18:['gfx900'],centos7:['gfx906'],sles15sp1:['gfx908']]),
-                       "rocm-docker":([ubuntu18:['gfx900'],centos7:['gfx906'],sles15sp1:['gfx906']])]
-    jobNameList = auxiliary.appendJobNameList(jobNameList)
+    def jobNameList = auxiliary.appendJobNameList(jobNameList)
 
     propertyList.each
     {
